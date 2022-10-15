@@ -32,7 +32,7 @@ function App() {
 
   const optionsManga = {
     method: "GET",
-    url: "https://manganami.herokuapp.com/list?page=2",
+    url: "https://manganami.herokuapp.com/list?page=1",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
@@ -62,7 +62,9 @@ function App() {
     <div className="App">
       <Header />
       <div className="content-wrap">
-        <Sidebar categories={category}/>
+        <div className="sidebar">
+          <Sidebar categories={category} />
+        </div>
         <MainContent topManga={topManga} />
       </div>
     </div>
