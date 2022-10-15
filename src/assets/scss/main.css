@@ -10,7 +10,7 @@ header {
   padding-bottom: 50px;
 }
 header h1 {
-  color: #aaa;
+  color: #AAA;
   font-size: 36px;
   font-weight: 400;
   text-align: center;
@@ -43,14 +43,14 @@ header h1 strong {
   color: #888;
   font-size: 16px;
   margin-bottom: 16px;
-  background-color: #eee;
+  background-color: #EEE;
   border-radius: 999px;
   text-decoration: none;
   transition: 0.4s;
 }
 .content-wrap aside nav a:hover {
   background-color: #313131;
-  color: #aaa;
+  color: #AAA;
 }
 .content-wrap main {
   flex: 1 1 0%;
@@ -67,8 +67,8 @@ header h1 strong {
 }
 .content-wrap main .main-head .search-box input {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background: none;
   outline: none;
   border: none;
@@ -77,7 +77,7 @@ header h1 strong {
   max-width: 400px;
   padding: 16px;
   border-radius: 999px;
-  background-color: #eee;
+  background-color: #EEE;
   transition: 0.4s;
 }
 .content-wrap main .main-head .search-box input ::-moz-placeholder {
@@ -89,43 +89,55 @@ header h1 strong {
 .content-wrap main .main-head .search-box input ::placeholder {
   color: #888;
 }
-.content-wrap main .main-head .search-box input:focus,
-.content-wrap main .main-head .search-box input:valid {
+.content-wrap main .main-head .search-box input:focus, .content-wrap main .main-head .search-box input:valid {
   background-color: #313131;
-  color: #fff;
+  color: #FFF;
 }
-.content-wrap main .anime-list {
+.content-wrap main .manga-list {
   display: flex;
   flex-wrap: wrap;
   margin-top: 32px;
   margin: 32px -8px 0px;
 }
-.content-wrap main .anime-list .anime-card {
+.content-wrap main .manga-list .manga-card {
   flex: 1 1 33.333%;
   max-width: 33.333%;
   padding: 16px 8px;
 }
-.content-wrap main .anime-list .anime-card a {
+.content-wrap main .manga-list .manga-card a {
   text-decoration: none;
 }
-.content-wrap main .anime-list .anime-card figure {
+.content-wrap main .manga-list .manga-card figure {
   display: block;
   margin-bottom: 16px;
 }
-.content-wrap main .anime-list .anime-card figure img {
+.content-wrap main .manga-list .manga-card figure img {
   display: block;
   width: 100%;
-  height: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 16px;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
   transition: 0.4s;
 }
-.content-wrap main .anime-list .anime-card h3 {
+.content-wrap main .manga-list .manga-card h3 {
+  color: #313131;
+  margin-top: 30px;
+  margin-bottom: 16px;
+}
+.content-wrap main .manga-list .manga-card h3:hover {
+  color: #ff0000;
+}
+.content-wrap main .manga-list .manga-card h4 {
   color: #313131;
 }
-.content-wrap main .anime-list .anime-card:hover figure img {
+.content-wrap main .manga-list .manga-card h4:hover {
+  color: #00ffae;
+}
+.content-wrap main .manga-list .manga-card:hover figure img {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
   transform: scale(1.05);
-} /*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

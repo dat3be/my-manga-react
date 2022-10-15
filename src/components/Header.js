@@ -5,7 +5,7 @@ function Header() {
     <div>
       <header>
         <h1>
-          My <strong>Anime</strong> Search
+          My <strong>Manga</strong> Reader
         </h1>
       </header>
     </div>

@@ -1,18 +1,18 @@
 import React from "react";
 
-function Sidebar( {topAnime} ) {
+function Sidebar( {topManga} ) {
   return (
     <aside>
       <nav>
-        <h3>Top Anime</h3>
-        {topAnime.map((anime) => (
+        <h3>Top Manga</h3>
+        {topManga.map((manga) => (
           <a
-            href={anime.url}
+            href={manga.url}
             target="_blank"
-            key={anime.mal_id}
+            key={manga.mal_id}
             rel="noreferrer"
           >
-            {anime.title}
+            {manga.title}
           </a>
         ))}
       </nav>
