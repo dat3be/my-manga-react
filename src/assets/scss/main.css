@@ -100,8 +100,8 @@ header h1 strong {
   margin: 32px -8px 0px;
 }
 .content-wrap main .manga-list .manga-card {
-  flex: 1 1 50%;
-  max-width: 50%;
+  flex: 1 1 33.33%;
+  max-width: 33.33;
   padding: 16px 8px;
 }
 .content-wrap main .manga-list .manga-card a {
@@ -150,5 +150,10 @@ header h1 strong {
     margin: 10px auto 5px 20px;
     width: 28%;
     display: none;
+  }
+  .manga-card {
+    flex: 1 1 50%;
+    max-width: 50%;
+    padding: 16px 8px;
   }
 }/*# sourceMappingURL=main.css.map */

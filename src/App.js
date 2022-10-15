@@ -52,6 +52,7 @@ function App() {
 
 
   useEffect(() => {
+    document.title = 'My Manga Reader - by Dat Ngo 2022'
     getCategory();
     getTopManga();
     console.log("category Loading...")
