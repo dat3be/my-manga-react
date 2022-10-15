@@ -6,12 +6,33 @@ import axios from "axios";
 
 function App() {
   const [mangaList, setMangaList] = useState([]);
+  const [category, setCategory] = useState([]);
   const [topManga, setTopManga] = useState([]);
   const [search, setSearch] = useState([]);
 
-  const options = {
+  const optionsCategory = {
     method: "GET",
-    url: "https://manganami.herokuapp.com/list",
+    url: "https://manganami.herokuapp.com/category",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+  };
+
+  const getCategory = () => {
+    axios
+      .request(optionsCategory)
+      .then(function (res) {
+        setCategory(res.data);
+        console.log(res.data)
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
+
+  const optionsManga = {
+    method: "GET",
+    url: "https://manganami.herokuapp.com/list?page=2",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
@@ -19,10 +40,10 @@ function App() {
 
   const getTopManga = () => {
     axios
-      .request(options)
+      .request(optionsManga)
       .then(function (res) {
         setTopManga(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch(function (error) {
         console.error(error);
@@ -31,8 +52,9 @@ function App() {
 
 
   useEffect(() => {
+    getCategory();
     getTopManga();
-
+    console.log("category Loading...")
     console.log("topManga Loading...");
     // console.log(topManga);
   }, []);
@@ -40,7 +62,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="content-wrap">
-        {/* <Sidebar topManga={topManga} /> */}
+        <Sidebar categories={category}/>
         <MainContent topManga={topManga} />
       </div>
     </div>
