@@ -21,6 +21,8 @@ header h1 strong {
 
 .content-wrap {
   display: flex;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 .content-wrap aside {
   flex: 1 1 250px;
@@ -100,8 +102,8 @@ header h1 strong {
   margin: 32px -8px 0px;
 }
 .content-wrap main .manga-list .manga-card {
-  flex: 1 1 33.33%;
-  max-width: 33.33;
+  flex: 50%;
+  max-width: 150px;
   padding: 16px 8px;
 }
 .content-wrap main .manga-list .manga-card a {
@@ -110,13 +112,12 @@ header h1 strong {
 .content-wrap main .manga-list .manga-card figure {
   display: block;
   margin-bottom: 16px;
+  height: 200px;
 }
 .content-wrap main .manga-list .manga-card figure img {
   display: block;
   width: 100%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 16px;
@@ -125,24 +126,28 @@ header h1 strong {
 }
 .content-wrap main .manga-list .manga-card h3 {
   color: #313131;
-  margin-top: 30px;
-  margin-bottom: 16px;
+  margin-top: 20px;
+  margin-bottom: auto;
 }
 .content-wrap main .manga-list .manga-card h3:hover {
   color: #ff0000;
+  transform: scale(1.02);
 }
 .content-wrap main .manga-list .manga-card h4 {
   color: #313131;
+  margin-top: 20px;
+  margin-bottom: auto;
 }
 .content-wrap main .manga-list .manga-card h4:hover {
   color: #00ffae;
+  transform: scale(1.02);
 }
 .content-wrap main .manga-list .manga-card:hover figure img {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
   transform: scale(1.05);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1024px) {
   .sidebar {
     visibility: hidden;
     clear: both;
@@ -150,10 +155,5 @@ header h1 strong {
     margin: 10px auto 5px 20px;
     width: 28%;
     display: none;
-  }
-  .manga-card {
-    flex: 1 1 50%;
-    max-width: 50%;
-    padding: 16px 8px;
   }
 }/*# sourceMappingURL=main.css.map */
