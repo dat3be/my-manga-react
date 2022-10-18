@@ -26,19 +26,19 @@ function Header() {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Navbar.Link href="/navbars" active={true}>
+            <Navbar.Link href="#" active={true}>
               <FaHome size={20} />
             </Navbar.Link>
-            <Navbar.Link href="/navbars">
+            <Navbar.Link href="#">
               <FaHistory size={20} />
             </Navbar.Link>
-            <Navbar.Link href="/navbars">
+            <Navbar.Link href="#">
               <FaBookReader size={20} />
             </Navbar.Link>
-            <Navbar.Link href="/navbars">
+            <Navbar.Link href="#">
               <FaBookmark size={20} />
             </Navbar.Link>
-            <Navbar.Link href="/navbars">
+            <Navbar.Link href="#">
               <FaBorderAll size={20} />
             </Navbar.Link>
           </Navbar.Collapse>

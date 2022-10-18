@@ -6,7 +6,7 @@ function MainContent(props) {
     <main>
       <div className="manga-list">
         {props.topManga.map((manga) => (
-          <MangaCard manga={manga} key={manga.mal_id} />
+          <MangaCard manga={manga} key={manga.id} />
         ))}
       </div>
     </main>

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
+import Sidebar from "./components/Sidebar";
 import axios from "axios";
 
 function App() {
-  const [darkToggle, setDarkToggle] = useState(false);
   const [mangaList, setMangaList] = useState([]);
   const [topManga, setTopManga] = useState([]);
 
@@ -21,7 +21,7 @@ function App() {
       .request(option)
       .then(function (res) {
         setTopManga(res.data.data);
-        // console.log(res.data.data);
+        console.log(res.data.data);
       })
       .catch(function (error) {
         console.error(error);
@@ -40,8 +40,8 @@ function App() {
       <div className="content-wrap">
         <div class="grid place-items-center h-screen">
           <Header />
-          <MainContent topManga={topManga} />
 
+            <MainContent topManga={topManga} />
 
         </div>
       </div>
