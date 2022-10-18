@@ -8,7 +8,7 @@ function App() {
   const [mangaList, setMangaList] = useState([]);
   const [topManga, setTopManga] = useState([]);
 
-  const optionsManga = {
+  const option = {
     method: "GET",
     url: "https://manganami.herokuapp.com/list?page=1",
     headers: {
@@ -18,7 +18,7 @@ function App() {
 
   const getTopManga = () => {
     axios
-      .request(optionsManga)
+      .request(option)
       .then(function (res) {
         setTopManga(res.data.data);
         // console.log(res.data.data);
@@ -41,6 +41,8 @@ function App() {
         <div class="grid place-items-center h-screen">
           <Header />
           <MainContent topManga={topManga} />
+
+
         </div>
       </div>
     </div>

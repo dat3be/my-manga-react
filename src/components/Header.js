@@ -1,6 +1,14 @@
 import React from "react";
 import { Navbar } from "flowbite-react/lib/cjs/components/Navbar";
 
+import {
+  FaHome,
+  FaHistory,
+  FaBookReader,
+  FaBookmark,
+  FaBorderAll,
+} from "react-icons/fa";
+
 function Header() {
   return (
     <header>
@@ -13,18 +21,26 @@ function Header() {
               alt="DatNgo Site"
             />
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              Dat Ngo Truyen
+              Đạt Ngô Truyện's
             </span>
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Navbar.Link href="/navbars" active={true}>
-              Home
+              <FaHome size={20} />
             </Navbar.Link>
-            <Navbar.Link href="/navbars">About</Navbar.Link>
-            <Navbar.Link href="/navbars">Services</Navbar.Link>
-            <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-            <Navbar.Link href="/navbars">Contact</Navbar.Link>
+            <Navbar.Link href="/navbars">
+              <FaHistory size={20} />
+            </Navbar.Link>
+            <Navbar.Link href="/navbars">
+              <FaBookReader size={20} />
+            </Navbar.Link>
+            <Navbar.Link href="/navbars">
+              <FaBookmark size={20} />
+            </Navbar.Link>
+            <Navbar.Link href="/navbars">
+              <FaBorderAll size={20} />
+            </Navbar.Link>
           </Navbar.Collapse>
         </Navbar>
       </div>
