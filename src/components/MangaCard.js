@@ -7,9 +7,13 @@ function MangaCard({ manga }) {
         <figure>
           <img src={manga.posterUrl} alt="Manga Image" />
         </figure>
-        <h3>{manga.mangaName}</h3>
-        <h4>{manga.newestChapter.chapterName}</h4>
-        <h5>{manga.newestChapter.updatedAt}</h5>
+        <h3>
+          <strong>{manga.mangaName}</strong>
+        </h3>
+        <h4>
+          {manga.newestChapter.chapterName}{" "}
+          <i>{manga.newestChapter.updatedAt}</i>
+        </h4>
       </a>
     </article>
   );

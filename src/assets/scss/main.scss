@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     margin: 0;
     padding: 0;
@@ -148,8 +152,10 @@ header {
 
                 h4 {
                     color: #313131;
-                    margin-top: 20px;
+                    margin-top: auto;
                     margin-bottom: auto;
+                    border-radius: 10px;
+
                 }
 
                 h4:hover {
