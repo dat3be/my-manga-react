@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+import SideBar from "./components/SideBar";
 import MainContent from "./components/MainContent";
+import { Navbar } from "flowbite-react/lib/cjs/components/Navbar";
 import axios from "axios";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       .request(optionsCategory)
       .then(function (res) {
         setCategory(res.data);
-        console.log(res.data)
+        // console.log(res.data)
       })
       .catch(function (error) {
         console.error(error);
@@ -50,21 +51,20 @@ function App() {
       });
   };
 
-
   useEffect(() => {
-    document.title = 'My Manga Reader - by Dat Ngo 2022'
+    document.title = "My Manga Reader - by Dat Ngo 2022";
     getCategory();
     getTopManga();
-    console.log("category Loading...")
+    console.log("category Loading...");
     console.log("topManga Loading...");
-    // console.log(topManga);
+    console.log(topManga);
   }, []);
   return (
     <div className="App">
       <Header />
       <div className="content-wrap">
         <div className="sidebar">
-          <Sidebar categories={category} />
+          <SideBar categories={category} />
         </div>
         <MainContent topManga={topManga} />
       </div>

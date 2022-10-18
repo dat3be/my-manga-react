@@ -12,15 +12,6 @@ header {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-header h1 {
-  color: #AAA;
-  font-size: 36px;
-  font-weight: 400;
-  text-align: center;
-}
-header h1 strong {
-  color: #313131;
-}
 
 .content-wrap {
   display: flex;
@@ -131,20 +122,34 @@ header h1 strong {
   color: #313131;
   margin-top: 20px;
   margin-bottom: auto;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 .content-wrap main .manga-list .manga-card h3:hover {
   color: #ff0000;
   transform: scale(1.02);
 }
-.content-wrap main .manga-list .manga-card h4 {
-  color: #313131;
-  margin-top: auto;
-  margin-bottom: auto;
+.content-wrap main .manga-list .manga-card span#chapterName {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #ebebeb;
+  box-sizing: border-box;
   border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: 0.3s;
 }
-.content-wrap main .manga-list .manga-card h4:hover {
-  color: #00ffae;
-  transform: scale(1.02);
+.content-wrap main .manga-list .manga-card span#chapterName:hover {
+  background-color: #ff0000;
+}
+.content-wrap main .manga-list .manga-card span#chapterUpdateAt {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: italic;
 }
 .content-wrap main .manga-list .manga-card:hover figure img {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);

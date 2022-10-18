@@ -12,17 +12,6 @@
 header {
     padding-top: 50px;
     padding-bottom: 50px;
-
-    h1 {
-        color: #AAA;
-        font-size: 36px;
-        font-weight: 400;
-        text-align: center;
-
-        strong {
-            color: #313131;
-        }
-    }
 }
 
 .content-wrap {
@@ -144,25 +133,36 @@ header {
                     color: #313131;
                     margin-top: 20px;
                     margin-bottom: auto;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 1.2;
                 }
                 h3:hover {
                     color:#ff0000;
                     transform: scale(1.02);
                 }
 
-                h4 {
-                    color: #313131;
-                    margin-top: auto;
-                    margin-bottom: auto;
+                span#chapterName{
+                    display: inline-block;
+                    margin-top: 10px;
+                    background-color: #ebebeb;
+                    box-sizing: border-box;
                     border-radius: 10px;
-
+                    padding: 4px 10px;
+                    font-size: 11px;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    transition: 0.3s;
                 }
-
-                h4:hover {
-                    color: #00ffae;
-                    transform: scale(1.02);
+                span#chapterName:hover {
+                    background-color: #ff0000;
                 }
-
+                span#chapterUpdateAt {
+                    display: inline-block;
+                    font-size: 11px;
+                    font-weight: 600;
+                    font-style: italic;
+                }
                 &:hover {
                     figure {
                         img {

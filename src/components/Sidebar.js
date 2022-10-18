@@ -1,6 +1,6 @@
 import React from "react";
 
-function Sidebar( {categories} ) {
+function SideBar( {categories} ) {
   return (
     <aside>
       <nav>
@@ -20,4 +20,4 @@ function Sidebar( {categories} ) {
   );
 }
 
-export default Sidebar;
+export default SideBar;
