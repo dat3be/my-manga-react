@@ -37,6 +37,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'></link>
       <div className="content-wrap">
         <div class="grid place-items-center h-screen">
           <Header />
