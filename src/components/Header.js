@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 import { Navbar } from "flowbite-react/lib/cjs/components/Navbar";
 
 function Header() {
   return (
-    <div>
-      <header>
+    <header>
+      <div>
         <Navbar fluid={true} rounded={true}>
           <Navbar.Brand href="https://my-manga-react.netlify.app/">
             <img
@@ -27,9 +27,9 @@ function Header() {
             <Navbar.Link href="/navbars">Contact</Navbar.Link>
           </Navbar.Collapse>
         </Navbar>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 }
 
-export default Header
+export default Header;

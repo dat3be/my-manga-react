@@ -10,7 +10,7 @@ function MangaCard({ manga }) {
         <h3>
           <strong>{manga.mangaName}</strong>
         </h3>
-        <span id="chapterName">{manga.newestChapter.chapterName}</span>
+        <span id="chapterName">{manga.newestChapter.chapterName}</span>{" "}
         <span id="chapterUpdateAt">{manga.newestChapter.updatedAt}</span>
       </a>
     </article>
