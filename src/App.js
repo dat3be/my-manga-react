@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 import Sidebar from "./components/Sidebar";
 import axios from "axios";
+import ToggleDarkMode from "./components/ToggleDarkMode";
 
 function App() {
   const [mangaList, setMangaList] = useState([]);
@@ -37,13 +38,18 @@ function App() {
   }, []);
   return (
     <div className="App">
-     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'></link>
-      <div className="content-wrap">
-        <div class="grid place-items-center h-screen">
-          <Header />
+      <link
+        href="https://fonts.googleapis.com/css?family=Roboto"
+        rel="stylesheet"
+      ></link>
+      <div class="bg-white dark:bg-gray-800">
+        <div className="content-wrap">
+          <div class="grid place-items-center h-screen">
+            <ToggleDarkMode />
+            <Header />
 
             <MainContent topManga={topManga} />
-
+          </div>
         </div>
       </div>
     </div>
