@@ -1,5 +1,7 @@
 import React from "react";
 import { Navbar } from "flowbite-react/lib/cjs/components/Navbar";
+import { FaMoon } from "react-icons/fa";
+import { FaSun } from "react-icons/fa";
 
 import {
   FaHome,
@@ -8,8 +10,10 @@ import {
   FaBookmark,
   FaBorderAll,
 } from "react-icons/fa";
+import useDarkMode from "./useDarkMode";
 
 function Header() {
+  const [isDarkMode, toggleDarkMode] = useDarkMode();
   return (
     <header>
       <div>
@@ -41,6 +45,11 @@ function Header() {
             <Navbar.Link href="#">
               <FaBorderAll size={20} />
             </Navbar.Link>
+            {isDarkMode ? (
+              <FaSun size="20" onClick={() => toggleDarkMode(!isDarkMode)} />
+            ) : (
+              <FaMoon size="20" onClick={() => toggleDarkMode(!isDarkMode)} />
+            )}
           </Navbar.Collapse>
         </Navbar>
       </div>

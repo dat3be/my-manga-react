@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
-import Sidebar from "./components/Sidebar";
 import axios from "axios";
-import ToggleDarkMode from "./components/ToggleDarkMode";
 
 function App() {
-  const [mangaList, setMangaList] = useState([]);
   const [topManga, setTopManga] = useState([]);
-
+  const [darkMode, setDarkMode] = useState(false);
   const option = {
     method: "GET",
     url: "https://manganami.herokuapp.com/list?page=1",
@@ -42,10 +39,10 @@ function App() {
         href="https://fonts.googleapis.com/css?family=Roboto"
         rel="stylesheet"
       ></link>
+
       <div class="bg-white dark:bg-gray-800">
         <div className="content-wrap">
           <div class="grid place-items-center h-screen">
-            <ToggleDarkMode />
             <Header />
 
             <MainContent topManga={topManga} />
