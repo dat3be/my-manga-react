@@ -1,15 +1,5 @@
 import React from "react";
-import { Navbar } from "flowbite-react/lib/cjs/components/Navbar";
-
-import {
-  FaHome,
-  FaHistory,
-  FaBookReader,
-  FaBookmark,
-  FaBorderAll,
-  FaMoon,
-  FaSun,
-} from "react-icons/fa";
+import { DarkThemeToggle, Dropdown, Avatar, Navbar} from "flowbite-react";
 import useDarkMode from "./useDarkMode";
 
 function Header() {
@@ -18,43 +8,46 @@ function Header() {
     <header>
       <div>
         <Navbar fluid={true} rounded={true}>
-          <Navbar.Brand href="https://my-manga-react.netlify.app/">
+          <Navbar.Brand href="https://flowbite.com/">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-9"
-              alt="DatNgo Site"
+              alt="Flowbite Logo"
             />
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
               Đạt Ngô Truyện's
             </span>
           </Navbar.Brand>
-          <Navbar.Toggle />
+          <div className="flex md:order-2">
+            <Navbar.Toggle />
+          </div>
           <Navbar.Collapse>
-            <Navbar.Link href="#" active={true}>
-              <FaHome size={20} />
-            </Navbar.Link>
-            <Navbar.Link href="#">
-              <FaHistory size={20} />
-            </Navbar.Link>
-            <Navbar.Link href="#">
-              <FaBookReader size={20} />
-            </Navbar.Link>
-            <Navbar.Link href="#">
-              <FaBookmark size={20} />
-            </Navbar.Link>
-            <Navbar.Link href="#">
-              <FaBorderAll size={20} />
-            </Navbar.Link>
 
-            {isDarkMode ? (
-              <FaSun size="20" onClick={() => toggleDarkMode(!isDarkMode)} />
-            ) : (
-              <FaMoon
-                color="#808080"
-                size="20"
-                onClick={() => toggleDarkMode(!isDarkMode)}
-              />
-            )}
+            <DarkThemeToggle onClick={() => toggleDarkMode(!isDarkMode)} />
+
+            <Dropdown
+              arrowIcon={false}
+              inline={true}
+              label={
+                <Avatar
+                  alt="User settings"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+              }
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">Đạt Ngô</span>
+                <span className="block truncate text-sm font-medium">
+                  dat.ngo2994@gmail.com
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item>Tổng Quan</Dropdown.Item>
+              <Dropdown.Item>Đã Xem</Dropdown.Item>
+              <Dropdown.Item>Đã Lưu</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item>Đăng Xuất</Dropdown.Item>
+            </Dropdown>
           </Navbar.Collapse>
         </Navbar>
       </div>
