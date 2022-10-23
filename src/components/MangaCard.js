@@ -8,7 +8,9 @@ function MangaCard({ manga }) {
           <img src={manga.posterUrl} alt="Manga Image" />
         </figure>
         <h3>
-          <strong>{manga.mangaName}</strong>
+          <strong class="text-gray-900 dark:text-white">
+            {manga.mangaName}
+          </strong>
         </h3>
         <span id="chapterName">{manga.newestChapter.chapterName}</span>{" "}
         <span id="chapterUpdateAt">{manga.newestChapter.updatedAt}</span>

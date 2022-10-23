@@ -40,7 +40,7 @@ function App() {
         rel="stylesheet"
       ></link>
 
-      <div class="bg-white dark:bg-gray-800">
+      <div class="bg-white dark:bg-gray-800 text-white">
         <div className="content-wrap">
           <div class="grid place-items-center h-screen">
             <Header />
