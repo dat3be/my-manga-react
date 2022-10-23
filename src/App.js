@@ -1,37 +1,26 @@
 import { useState, useEffect } from "react";
+import { Button } from "flowbite-react";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
-import axios from "axios";
 
 function App() {
+let page = 1;
   const [topManga, setTopManga] = useState([]);
-  const [darkMode, setDarkMode] = useState(false);
-  const option = {
-    method: "GET",
-    url: "https://manganami.herokuapp.com/list?page=1",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    },
-  };
+  const [nextPage, setNextPage] = useState(0);
+  const [isFetching, setIsFetching] = useState(false);
 
-  const getTopManga = () => {
-    axios
-      .request(option)
-      .then(function (res) {
-        setTopManga(res.data.data);
-        console.log(res.data.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+  const getTopManga = async () => {
+    const response = await fetch(
+      `https://manganami.herokuapp.com/list?page=${nextPage}`
+    );
+    const data = await response.json();
+    setTopManga(data.data);
   };
 
   useEffect(() => {
     document.title = "My Manga Reader - by Dat Ngo 2022";
     getTopManga();
-    console.log("category Loading...");
-    console.log("topManga Loading...");
-    console.log(topManga);
+
   }, []);
   return (
     <div className="App">
@@ -44,7 +33,7 @@ function App() {
         <div className="content-wrap">
           <div class="grid place-items-center h-screen">
             <Header />
-
+            <Button onClick={() => setNextPage(nextPage + 1)}>Hello trang {nextPage} </Button>
             <MainContent topManga={topManga} />
           </div>
         </div>
