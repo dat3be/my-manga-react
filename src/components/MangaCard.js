@@ -1,9 +1,9 @@
 import React from "react";
-
+import {Link} from "react-router-dom";
 function MangaCard({ manga }) {
   return (
     <article className="manga-card">
-      <a href="https://datdei.com" target="_blank" rel="noreferrer">
+      <Link to={`/details`}>
         <figure>
           <img src={manga.posterUrl} alt="manga-poster" />
         </figure>
@@ -14,7 +14,7 @@ function MangaCard({ manga }) {
         </h3>
         <span id="chapterName">{manga.newestChapter.chapterName}</span>{" "}
         <span id="chapterUpdateAt">{manga.newestChapter.updatedAt}</span>
-      </a>
+      </Link>
     </article>
   );
 }

@@ -8,10 +8,10 @@ function MainContent(props) {
       <InfiniteScroll
         pageStart={0}
         loadMore={props.useLoadMore}
-        hasMore={true || false}
+        hasMore={props.hasLoadMore}
         loader={
           <div className="loader" key={0}>
-            Loading ...
+            Đang tải truyện ...
           </div>
         }
       >
