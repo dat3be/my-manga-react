@@ -3,9 +3,9 @@ import React from "react";
 function MangaCard({ manga }) {
   return (
     <article className="manga-card">
-      <a href="#" target="_blank" rel="noreferrer">
+      <a href="https://datdei.com" target="_blank" rel="noreferrer">
         <figure>
-          <img src={manga.posterUrl} alt="Manga Image" />
+          <img src={manga.posterUrl} alt="manga-poster" />
         </figure>
         <h3>
           <strong class="text-gray-900 dark:text-white">

@@ -6,7 +6,9 @@ module.exports = {
     "node_modules/flowbite/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: { "fb-blue": "#0d6efd" },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };

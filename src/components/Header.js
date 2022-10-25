@@ -1,7 +1,6 @@
 import React from "react";
 import { DarkThemeToggle, Dropdown, Avatar, Navbar} from "flowbite-react";
 import useDarkMode from "./useDarkMode";
-import { FaBorderAll } from "react-icons/fa";
 
 function Header() {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
