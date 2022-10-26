@@ -32,9 +32,9 @@ function Details() {
   return (
     <div className="bg-white text-black dark:bg-gray-800 dark:text-white w-full h-full">
       <div className="flex flex-col min-h-screen ">
-        {/* <Header /> */}
+        <Header />
         <div className="w-screen fixed bg-transparent top-0 transition-all duration-500 z-50">
-          <Header />
+          {/* <Header /> */}
         </div>
         <div className="flex-1 bg-background-1">
           <div className="w-full">
@@ -85,7 +85,7 @@ function Details() {
                           d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
                         ></path>
                       </svg>
-                      Tác giả: {mangaDetails.otherDetails.authorName}
+                      {/* Tác giả: {mangaDetails.otherDetails.authorName} */}
                     </h3>
                     <h3 class="flex items-center">
                       <svg
@@ -101,7 +101,7 @@ function Details() {
                         <path fill="none" d="M0 0h24v24H0V0z"></path>
                         <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0012 4zM2.92 9.07C5.51 7.08 8.67 6 12 6s6.49 1.08 9.08 3.07L12 18.17l-9.08-9.1z"></path>
                       </svg>
-                      Trạng thái: {mangaDetails.otherDetails.status}
+                      {/* Trạng thái: {mangaDetails.otherDetails.status} */}
                     </h3>
                     <h3 class="flex items-center mb-4">
                       <svg
@@ -116,8 +116,8 @@ function Details() {
                       >
                         <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3zM664.8 561.6l36.1 210.3L512 672.7 323.1 772l36.1-210.3-152.8-149L417.6 382 512 190.7 606.4 382l211.2 30.7-152.8 148.9z"></path>
                       </svg>
-                      Xếp hạng: {mangaDetails.otherDetails.ratingValue} (
-                      {mangaDetails.otherDetails.ratingCount} bình chọn)
+                      {/* Xếp hạng: {mangaDetails.otherDetails.ratingValue} (
+                      {mangaDetails.otherDetails.ratingCount} bình chọn) */}
                     </h3>
 
                     <div class="flex flex-wrap mb-4">
