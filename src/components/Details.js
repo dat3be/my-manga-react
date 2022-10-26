@@ -32,7 +32,7 @@ function Details() {
       <div className="flex flex-col">
         <Header />
       </div>
-      <div className="bg-primary-200 pb-10 order-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4 rounded">
+      <div className="bg-primary-200 pb-10 order-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-40 rounded">
         <div className="min-h-screen mt-[-1px]">
           <div className="flex flex-col lg:flex-row">
             <div className="pt-4 flex-1 text-text-color">
@@ -46,9 +46,9 @@ function Details() {
               </div>
               <div className="flex flex-col lg:flex-row">
                 <div className="flex justify-center lg:mb-0 mb-4">
-                  <div className="w-[190px] rounded-sm">
+                  <div className="w-[250px] rounded-sm">
                     <img
-                      className="border mt-4 rounded-md"
+                      className="border mt-2 rounded-md w-full object-cover"
                       src={mangaDetails.posterUrl}
                       alt={mangaDetails.mangaName}
                     />
@@ -57,10 +57,33 @@ function Details() {
                 <div className="flex-1 lg:ml-10 ml-0">
                   <div className="flex items-center justify-between">
                     <div className="flex gap-2 flex-wrap my-3">
-                      <button>yeah</button>
-                      <button>bae</button>
-                      <button>love</button>
-                      <button>you</button>
+                      <button className="h-8 w-8 object-cover">
+                        <img src="https://next-comicszzz.vercel.app/share-icon/facebook.svg"></img>
+                      </button>
+                      <button className="h-8 w-8 object-cover">
+                        <img src="https://next-comicszzz.vercel.app/share-icon/twitter.svg"></img>
+                      </button>
+                      <button className="h-8 w-8 object-cover">
+                        <img src="https://next-comicszzz.vercel.app/share-icon/reddit.svg"></img>
+                      </button>
+                      <button className="h-8 w-8 object-cover">
+                        <img src="https://next-comicszzz.vercel.app/share-icon/email.svg"></img>
+                      </button>
+                      <button onClick={(e) => handleReadManga(e) } className="w-8 h-8 rounded-full bg-primary-300 flex items-center justify-center" alt="Sao chép liên kết">
+                        <svg
+                          stroke="currentColor"
+                          fill="currentColor"
+                          stroke-width="0.2"
+                          viewBox="0 0 16 16"
+                          className="w-32 h-32"
+                          height="1em"
+                          width="1em"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path>
+                          <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path>
+                        </svg>
+                      </button>
                     </div>
                     <button className="bg-blue-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold">
                       Theo dõi
@@ -70,13 +93,13 @@ function Details() {
                     <li className="flex text-lg font-semibold my-2">
                       <p className="w-[100px]">Tác giả: </p>
                       <p className="ml-4 flex-1">
-                        {mangaDetails.otherDetails.authorName}
+                        {/* {mangaDetails.otherDetails.authorName} */}
                       </p>
                     </li>
                     <li className="flex text-lg font-semibold my-2">
                       <p className="w-[100px]">Trạng thái:</p>
                       <p className="ml-4 flex-1">
-                        {mangaDetails.otherDetails.status}
+                        {/* {mangaDetails.otherDetails.status} */}
                       </p>
                     </li>
                     <li className="flex text-lg font-semibold my-2">
