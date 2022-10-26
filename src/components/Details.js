@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button } from "react";
+
 
 function Details() {
   const [urlManga, setUrlManga] = useState("");

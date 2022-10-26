@@ -1,6 +1,7 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import MangaCard from "./MangaCard";
+import "../styles/loader.css";
 
 function MainContent(props) {
   return (
@@ -11,7 +12,12 @@ function MainContent(props) {
         hasMore={props.hasLoadMore}
         loader={
           <div className="loader" key={0}>
-            Đang tải truyện ...
+            <center>
+              <div class="lds-ripple">
+                <div></div>
+                <div></div>
+              </div>
+            </center>
           </div>
         }
       >
