@@ -1,14 +1,16 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { handleReadManga } from './Details'
+
 function MangaCard({ manga }) {
   return (
-    <article className="manga-card">
-      <Link to={`/details`}>
+    <article className="manga-card" onClick={(e) => handleReadManga(e)} >
+      <Link to={`/details/${manga.id}`}>
         <figure>
           <img src={manga.posterUrl} alt="manga-poster" />
         </figure>
         <h3>
-          <strong class="text-gray-900 dark:text-white">
+          <strong className="text-gray-900 dark:text-white">
             {manga.mangaName}
           </strong>
         </h3>

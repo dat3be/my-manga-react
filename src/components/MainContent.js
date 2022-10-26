@@ -13,10 +13,11 @@ function MainContent(props) {
         loader={
           <div className="loader" key={0}>
             <center>
-              <div class="lds-ripple">
+              <div className="grid place-items-center w-full h-full">
+              <div className="lds-ripple">
                 <div></div>
                 <div></div>
-              </div>
+              </div></div>
             </center>
           </div>
         }

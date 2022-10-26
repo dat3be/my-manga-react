@@ -23,12 +23,10 @@ function Home() {
         rel="stylesheet"
       ></link>
 
-      <div class="bg-white dark:bg-gray-800 text-white flex flex-col min-h-screen">
+      <div className="bg-white dark:bg-gray-800 text-white dark:text-black">
         <Header />
-        <div class="flex-1">
-          <div class="flex-1 flex flex-col items-center">
             <div className="content-wrap">
-              <div class="grid place-items-center h-screen">
+              <div className="grid place-items-center w-full h-full">
                 <MainContent
                   topManga={topManga}
                   useLoadMore={useLoadMore}
@@ -37,8 +35,6 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </div>
   );
 }

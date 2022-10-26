@@ -8,7 +8,7 @@ function Header() {
     <header>
       <div>
         <Navbar fluid={true} rounded={true}>
-          <Navbar.Brand href="https://flowbite.com/">
+          <Navbar.Brand href="http://localhost:3000/">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-9"
