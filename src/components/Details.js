@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Header from "./Header";
 import "../App.css";
 
@@ -11,21 +11,21 @@ export function handleReadManga(e) {
 
 function Details() {
   const [mangaDetails, setMangaDetails] = useState({});
-
   let url = useParams();
+  let categories = [];
   async function getMangaDetails() {
     const data = await fetch(
       `https://manganami.herokuapp.com/details/${url.url}`
     );
     const response = await data.json();
-    console.log(response);
+    console.log(response.categories.length);
     setMangaDetails(response);
   }
 
   useEffect(() => {
     getMangaDetails(url);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+  },[]);
 
   return (
     <div className="bg-white text-black dark:bg-gray-800 dark:text-white w-full h-full">
@@ -69,20 +69,12 @@ function Details() {
                       <button className="h-8 w-8 object-cover">
                         <img src="https://next-comicszzz.vercel.app/share-icon/email.svg"></img>
                       </button>
-                      <button onClick={(e) => handleReadManga(e) } className="w-8 h-8 rounded-full bg-primary-300 flex items-center justify-center" alt="Sao chép liên kết">
-                        <svg
-                          stroke="currentColor"
-                          fill="currentColor"
-                          stroke-width="0.2"
-                          viewBox="0 0 16 16"
-                          className="w-32 h-32"
-                          height="1em"
-                          width="1em"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path>
-                          <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path>
-                        </svg>
+                      <button
+                        onClick={(e) => handleReadManga(e)}
+                        className="w-8 h-8 rounded-full bg-primary-300 flex items-center justify-center"
+                        alt="Sao chép liên kết"
+                      >
+                        icon link
                       </button>
                     </div>
                     <button className="bg-blue-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold">
@@ -104,26 +96,16 @@ function Details() {
                     </li>
                     <li className="flex text-lg font-semibold my-2">
                       <p className="w-[100px]">Thể loại: </p>
-                      <p className="ml-4 flex flex-wrap flex-1">
+                      <div className="ml-4 flex flex-wrap flex-1"></div>
+
+                      {/* <p className="ml-4 flex flex-wrap flex-1">
+                        {mangaDetails.categories.forEach((category) => {
+                          categories.push(category);
+                        })}
                         <button className="mb-3 mr-3 text-text-color px-2 text-sm py-1 rounded-md bg-blue-500">
-                          Action
+                          {categories}
                         </button>
-                        <button className="mb-3 mr-3 text-text-color px-2 text-sm py-1 rounded-md bg-blue-500">
-                          Fantasy
-                        </button>
-                        <button className="mb-3 mr-3 text-text-color px-2 text-sm py-1 rounded-md bg-blue-500">
-                          Manhua
-                        </button>
-                        <button className="mb-3 mr-3 text-text-color px-2 text-sm py-1 rounded-md bg-blue-500">
-                          Shounen
-                        </button>
-                        <button className="mb-3 mr-3 text-text-color px-2 text-sm py-1 rounded-md bg-blue-500">
-                          Supernatural
-                        </button>
-                        <button className="mb-3 mr-3 text-text-color px-2 text-sm py-1 rounded-md bg-blue-500">
-                          Truyện Màu
-                        </button>
-                      </p>
+                      </p> */}
                     </li>
                   </ul>
                   <div className="flex items-center mt-4">
@@ -139,21 +121,7 @@ function Details() {
 
               <div className="mt-4">
                 <div className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                    className="w-6 h-6 text-blue-500 mr-1"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    ></path>
-                  </svg>
+                  icon noi dung yeah
                   <h1 className="text-xl font-semibold text-text-color">
                     Nội dung
                   </h1>
@@ -163,19 +131,7 @@ function Details() {
 
               <div className="mt-4">
                 <div className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    class="w-6 h-6 text-blue-500 mr-1"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
+                  icon danh sach chuong
                   <h1 className="text-xl font-semibold text-text-color">
                     Danh sách chương
                   </h1>

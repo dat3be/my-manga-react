@@ -14,6 +14,7 @@ function Home() {
     const data = await response.json();
     let newData = [...topManga, ...data.data];
     setTopManga(newData);
+    console.log(newData);
     setHasLoadMore(data.pagination.currentPage < data.pagination.totalPage);
   }
   return (
