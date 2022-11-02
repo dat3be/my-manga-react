@@ -9,7 +9,10 @@ import {
   IoListSharp,
   IoLink,
   IoReader,
+  IoArrowUp,
+  IoArrowDown,
 } from "react-icons/io5";
+
 
 export function handleReadManga(e) {
   e.preventDefault();
@@ -18,8 +21,8 @@ export function handleReadManga(e) {
 
 function Details() {
   const [mangaDetails, setMangaDetails] = useState({});
+  const [isActive, setIsActive] = useState(false);
   let url = useParams();
-
   async function getMangaDetails() {
     const data = await fetch(
       `https://manganami.herokuapp.com/details/${url.url}`
@@ -114,7 +117,7 @@ function Details() {
                       </div>
                     </li>
                   </ul>
-                  <div className="flex mt-4 gap-4 flex-wrap my-3">
+                  <div className="flex mt-4 gap-4 flex-wrap my-3 text-white">
                     <button className="bg-green-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
                       <IoFlashOutline
                         size="20"
@@ -123,10 +126,7 @@ function Details() {
                       Chap mới
                     </button>
 
-                    <button
-                      className="bg-white
-                     px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  bg-white text-gray-800"
-                    >
+                    <button className="px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  dark:bg-white bg-gray-dark dark:text-black text-white">
                       <IoBookOutline
                         size="20"
                         className="float-left align-baseline"
@@ -158,14 +158,32 @@ function Details() {
                 </div>
               </div>
 
-              <div className="border mt-4 text-text-color rounded-md">
+              <div className="border mt-4 rounded-md">
                 <ul className="w-full h-[350px] overflow-y-scroll">
                   <li>
+                    <div className="flex items-center justify-between mt-4 p-2">
+                      <p>
+                        <button
+                          className="flex
+                          items-center
+                          justify-between"
+                          onClick={() => setIsActive(!isActive)}
+                        >
+                          Sắp xếp chương{" "}
+                          {isActive ? (
+                            <IoArrowUp size="20" />
+                          ) : (
+                            <IoArrowDown size="20" />
+                          )}
+                        </button>
+                      </p>
+                      <p>Lượt xem</p>
+                    </div>
                     <div className="flex items-center justify-between">
                       <p className="break-after-auto p-2">
                         {mangaDetails.chapters?.map((chapter) => (
                           <p
-                            className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[110%]"
+                            className="px-3 py-1 text-sm rounded-md"
                             key={chapter.chapterName}
                           >
                             <Link to={`/read/${chapter.chapterId}`}>
@@ -178,7 +196,7 @@ function Details() {
                       {/* <p className="text-gray-500 text-sm break-after-auto p-2">
                         {mangaDetails.chapters?.map((chapter) => (
                           <p
-                            className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[110%]"
+                            className="px-3 py-1 text-sm rounded-md"
                             key={chapter.updatedAt}
                           >
                             {chapter.updatedAt}
@@ -189,15 +207,13 @@ function Details() {
                       <p className="text-gray-500 text-sm break-after-auto p-2">
                         {mangaDetails.chapters?.map((chapter) => (
                           <p
-                            className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[110%]"
+                            className="px-3 py-1 text-sm rounded-md"
                             key={chapter.viewCount}
                           >
-                            {chapter.viewCount} lượt xem
+                            {chapter.viewCount}
                           </p>
                         ))}
                       </p>
-
-
                     </div>
                   </li>
                 </ul>
