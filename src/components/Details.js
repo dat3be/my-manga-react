@@ -3,6 +3,13 @@ import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Header from "./Header";
 import "../App.css";
+import {
+  IoBookOutline,
+  IoFlashOutline,
+  IoListSharp,
+  IoLink,
+  IoReader,
+} from "react-icons/io5";
 
 export function handleReadManga(e) {
   e.preventDefault();
@@ -74,7 +81,7 @@ function Details() {
                         className="w-8 h-8 rounded-full bg-primary-300 flex items-center justify-center"
                         alt="Sao chép liên kết"
                       >
-                        icon link
+                        <IoLink />
                       </button>
                     </div>
                     <button className="bg-blue-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold">
@@ -82,7 +89,7 @@ function Details() {
                     </button>
                   </div>
                   <ul>
-                    <li className="flex text-lg font-semibold my-2">
+                    <li className="flex text-lg font-semibold my-2 ">
                       <p className="w-[100px]">Tác giả: </p>
                       <p className="ml-4 flex-1">
                         {/* {mangaDetails.otherDetails.authorName} */}
@@ -108,12 +115,24 @@ function Details() {
                       </p> */}
                     </li>
                   </ul>
-                  <div className="flex items-center mt-4">
-                    <button className="bg-green-500 px-3 py-1 text-sm text-text-color rounded-md">
-                      <a className="font-semibold">Đọc từ đầu</a>
+                  <div className="flex mt-4 gap-4 flex-wrap my-3">
+                    <button className="bg-green-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
+                      <IoFlashOutline
+                        size="20"
+                        class="float-left align-baseline"
+                      />
+                      Chap mới
                     </button>
-                    <button className="bg-green-500 px-3 py-1 text-sm text-text-color rounded-md ml-5">
-                      <a className="font-semibold">Đọc mới nhất</a>
+
+                    <button
+                      className="bg-white
+                     px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  bg-white text-gray-800"
+                    >
+                      <IoBookOutline
+                        size="20"
+                        className="float-left align-baseline"
+                      />
+                      Đọc từ đầu
                     </button>
                   </div>
                 </div>
@@ -121,19 +140,21 @@ function Details() {
 
               <div className="mt-4">
                 <div className="flex items-center">
-                  icon noi dung yeah
+                  <IoListSharp size="30" />
                   <h1 className="text-xl font-semibold text-text-color">
-                    Nội dung
+                    &nbsp;Tóm tắt
                   </h1>
                 </div>
-                <p className="font-semibold mt-4">{mangaDetails.description}</p>
+                <p className="mt-4 justify-between">
+                  {mangaDetails.description}
+                </p>
               </div>
 
               <div className="mt-4">
                 <div className="flex items-center">
-                  icon danh sach chuong
+                  <IoReader size="30" />
                   <h1 className="text-xl font-semibold text-text-color">
-                    Danh sách chương
+                    &nbsp;Danh sách chương
                   </h1>
                 </div>
               </div>
@@ -142,25 +163,7 @@ function Details() {
                 <ul className="w-full h-[350px] overflow-y-scroll">
                   <li>
                     <a className="flex items-center justify-between p-2">
-                      <p className="font-semibold">Chapter 2713</p>
-                      <p className="text-gray-500 text-sm">7 giờ trước</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="flex items-center justify-between p-2">
-                      <p className="font-semibold">Chapter 2712</p>
-                      <p className="text-gray-500 text-sm">7 giờ trước</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="flex items-center justify-between p-2">
-                      <p className="font-semibold">Chapter 2711</p>
-                      <p className="text-gray-500 text-sm">7 giờ trước</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a className="flex items-center justify-between p-2">
-                      <p className="font-semibold">Chapter 2710</p>
+                      <p className="">Chapter 2713</p>
                       <p className="text-gray-500 text-sm">7 giờ trước</p>
                     </a>
                   </li>
