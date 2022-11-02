@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Header from "./Header";
 import "../App.css";
 import {
@@ -19,20 +19,19 @@ export function handleReadManga(e) {
 function Details() {
   const [mangaDetails, setMangaDetails] = useState({});
   let url = useParams();
-  let categories = [];
+
   async function getMangaDetails() {
     const data = await fetch(
       `https://manganami.herokuapp.com/details/${url.url}`
     );
     const response = await data.json();
-    console.log(response.categories.length);
+    console.log(response);
     setMangaDetails(response);
   }
 
   useEffect(() => {
     getMangaDetails(url);
-
-  },[]);
+  }, []);
 
   return (
     <div className="bg-white text-black dark:bg-gray-800 dark:text-white w-full h-full">
@@ -84,7 +83,7 @@ function Details() {
                         <IoLink />
                       </button>
                     </div>
-                    <button className="bg-blue-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold">
+                    <button className="bg-blue-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold transition-all hover:scale-[110%]">
                       Theo dõi
                     </button>
                   </div>
@@ -92,27 +91,27 @@ function Details() {
                     <li className="flex text-lg font-semibold my-2 ">
                       <p className="w-[100px]">Tác giả: </p>
                       <p className="ml-4 flex-1">
-                        {/* {mangaDetails.otherDetails.authorName} */}
+                        {mangaDetails.otherDetails?.authorName}
                       </p>
                     </li>
                     <li className="flex text-lg font-semibold my-2">
                       <p className="w-[100px]">Trạng thái:</p>
                       <p className="ml-4 flex-1">
-                        {/* {mangaDetails.otherDetails.status} */}
+                        {mangaDetails.otherDetails?.status}
                       </p>
                     </li>
                     <li className="flex text-lg font-semibold my-2">
                       <p className="w-[100px]">Thể loại: </p>
-                      <div className="ml-4 flex flex-wrap flex-1"></div>
-
-                      {/* <p className="ml-4 flex flex-wrap flex-1">
-                        {mangaDetails.categories.forEach((category) => {
-                          categories.push(category);
-                        })}
-                        <button className="mb-3 mr-3 text-text-color px-2 text-sm py-1 rounded-md bg-blue-500">
-                          {categories}
-                        </button>
-                      </p> */}
+                      <div className="flex gap-3 flex-wrap">
+                        {mangaDetails.categories?.map((category) => (
+                          <p
+                            className="bg-blue-500 px-3 py-1 text-sm rounded-md font-semibold transition-all hover:scale-[110%]"
+                            key={category.categoryName}
+                          >
+                            <button>{category.categoryName}</button>
+                          </p>
+                        ))}
+                      </div>
                     </li>
                   </ul>
                   <div className="flex mt-4 gap-4 flex-wrap my-3">
@@ -162,10 +161,44 @@ function Details() {
               <div className="border mt-4 text-text-color rounded-md">
                 <ul className="w-full h-[350px] overflow-y-scroll">
                   <li>
-                    <a className="flex items-center justify-between p-2">
-                      <p className="">Chapter 2713</p>
-                      <p className="text-gray-500 text-sm">7 giờ trước</p>
-                    </a>
+                    <div className="flex items-center justify-between">
+                      <p className="break-after-auto p-2">
+                        {mangaDetails.chapters?.map((chapter) => (
+                          <p
+                            className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[110%]"
+                            key={chapter.chapterName}
+                          >
+                            <Link to={`/read/${chapter.chapterId}`}>
+                              {chapter.chapterName}
+                            </Link>
+                          </p>
+                        ))}
+                      </p>
+
+                      {/* <p className="text-gray-500 text-sm break-after-auto p-2">
+                        {mangaDetails.chapters?.map((chapter) => (
+                          <p
+                            className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[110%]"
+                            key={chapter.updatedAt}
+                          >
+                            {chapter.updatedAt}
+                          </p>
+                        ))}
+                      </p> */}
+
+                      <p className="text-gray-500 text-sm break-after-auto p-2">
+                        {mangaDetails.chapters?.map((chapter) => (
+                          <p
+                            className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[110%]"
+                            key={chapter.viewCount}
+                          >
+                            {chapter.viewCount} lượt xem
+                          </p>
+                        ))}
+                      </p>
+
+
+                    </div>
                   </li>
                 </ul>
               </div>
