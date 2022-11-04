@@ -12,13 +12,12 @@ function MainContent(props) {
         hasMore={props.hasLoadMore}
         loader={
           <div className="loader" key={0}>
-            <center>
-              <div className="grid place-items-center w-full h-full">
+            <div className="grid mx-auto w-full h-screen">
               <div className="lds-ripple">
                 <div></div>
                 <div></div>
-              </div></div>
-            </center>
+              </div>
+            </div>
           </div>
         }
       >

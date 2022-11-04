@@ -45,7 +45,10 @@ function Details() {
   }, []); //eslint-disable-line
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="bg-white text-black dark:bg-gray-800 dark:text-white grid place-items-center w-screen h-screen"><div><div className="lds-ripple">
+                <div></div>
+                <div></div>
+              </div></div></div>
   }
 
   return (
