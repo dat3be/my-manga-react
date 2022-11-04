@@ -11,8 +11,11 @@ import {
   IoReader,
   IoArrowUp,
   IoArrowDown,
+  IoMail,
+  IoLogoFacebook,
+  IoLogoTwitter,
+  IoLogoReddit,
 } from "react-icons/io5";
-
 
 export function handleReadManga(e) {
   e.preventDefault();
@@ -22,6 +25,9 @@ export function handleReadManga(e) {
 function Details() {
   const [mangaDetails, setMangaDetails] = useState({});
   const [isActive, setIsActive] = useState(false);
+  const [listChapter, setListChapter] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
   let url = useParams();
   async function getMangaDetails() {
     const data = await fetch(
@@ -30,11 +36,17 @@ function Details() {
     const response = await data.json();
     console.log(response);
     setMangaDetails(response);
+    setListChapter(response.chapters);
+    setLoading(false);
   }
 
   useEffect(() => {
     getMangaDetails(url);
-  }, []);
+  }, []); //eslint-disable-line
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="bg-white text-black dark:bg-gray-800 dark:text-white w-full h-full">
@@ -67,23 +79,23 @@ function Details() {
                   <div className="flex items-center justify-between">
                     <div className="flex gap-2 flex-wrap my-3">
                       <button className="h-8 w-8 object-cover">
-                        <img src="https://next-comicszzz.vercel.app/share-icon/facebook.svg"></img>
+                        <IoLogoFacebook size="25" />
                       </button>
                       <button className="h-8 w-8 object-cover">
-                        <img src="https://next-comicszzz.vercel.app/share-icon/twitter.svg"></img>
+                        <IoLogoTwitter size="25" />
                       </button>
                       <button className="h-8 w-8 object-cover">
-                        <img src="https://next-comicszzz.vercel.app/share-icon/reddit.svg"></img>
+                        <IoLogoReddit size="25" />
                       </button>
                       <button className="h-8 w-8 object-cover">
-                        <img src="https://next-comicszzz.vercel.app/share-icon/email.svg"></img>
+                        <IoMail size="25" />
                       </button>
                       <button
                         onClick={(e) => handleReadManga(e)}
                         className="w-8 h-8 rounded-full bg-primary-300 flex items-center justify-center"
                         alt="Sao chép liên kết"
                       >
-                        <IoLink />
+                        <IoLink size="25" />
                       </button>
                     </div>
                     <button className="bg-blue-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold transition-all hover:scale-[110%]">
@@ -94,19 +106,19 @@ function Details() {
                     <li className="flex text-lg font-semibold my-2 ">
                       <p className="w-[100px]">Tác giả: </p>
                       <p className="ml-4 flex-1">
-                        {mangaDetails.otherDetails?.authorName}
+                        {mangaDetails.otherDetails.authorName}
                       </p>
                     </li>
                     <li className="flex text-lg font-semibold my-2">
                       <p className="w-[100px]">Trạng thái:</p>
                       <p className="ml-4 flex-1">
-                        {mangaDetails.otherDetails?.status}
+                        {mangaDetails.otherDetails.status}
                       </p>
                     </li>
                     <li className="flex text-lg font-semibold my-2">
                       <p className="w-[100px]">Thể loại: </p>
                       <div className="flex gap-3 flex-wrap">
-                        {mangaDetails.categories?.map((category) => (
+                        {mangaDetails.categories.map((category) => (
                           <p
                             className="bg-blue-500 px-3 py-1 text-sm rounded-md font-semibold transition-all hover:scale-[110%]"
                             key={category.categoryName}
@@ -121,7 +133,7 @@ function Details() {
                     <button className="bg-green-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
                       <IoFlashOutline
                         size="20"
-                        class="float-left align-baseline"
+                        className="float-left align-baseline"
                       />
                       Chap mới
                     </button>
@@ -167,13 +179,16 @@ function Details() {
                           className="flex
                           items-center
                           justify-between"
-                          onClick={() => setIsActive(!isActive)}
+                          onClick={() => {
+                            setListChapter(listChapter.reverse());
+                            setIsActive(!isActive);
+                          }}
                         >
                           Sắp xếp chương{" "}
                           {isActive ? (
-                            <IoArrowUp size="20" />
-                          ) : (
                             <IoArrowDown size="20" />
+                          ) : (
+                            <IoArrowUp size="20" />
                           )}
                         </button>
                       </p>
@@ -181,9 +196,9 @@ function Details() {
                     </div>
                     <div className="flex items-center justify-between">
                       <p className="break-after-auto p-2">
-                        {mangaDetails.chapters?.map((chapter) => (
+                        {listChapter.map((chapter) => (
                           <p
-                            className="px-3 py-1 text-sm rounded-md"
+                            className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[103%]"
                             key={chapter.chapterName}
                           >
                             <Link to={`/read/${chapter.chapterId}`}>
@@ -193,19 +208,8 @@ function Details() {
                         ))}
                       </p>
 
-                      {/* <p className="text-gray-500 text-sm break-after-auto p-2">
-                        {mangaDetails.chapters?.map((chapter) => (
-                          <p
-                            className="px-3 py-1 text-sm rounded-md"
-                            key={chapter.updatedAt}
-                          >
-                            {chapter.updatedAt}
-                          </p>
-                        ))}
-                      </p> */}
-
                       <p className="text-gray-500 text-sm break-after-auto p-2">
-                        {mangaDetails.chapters?.map((chapter) => (
+                        {listChapter.map((chapter) => (
                           <p
                             className="px-3 py-1 text-sm rounded-md"
                             key={chapter.viewCount}
