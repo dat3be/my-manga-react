@@ -28,10 +28,10 @@ function Details() {
   const [listChapter, setListChapter] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  let url = useParams();
+  let urlManga = useParams();
   async function getMangaDetails() {
     const data = await fetch(
-      `https://manganami.herokuapp.com/details/${url.url}`
+      `https://manganami.herokuapp.com/details/${urlManga.url}`
     );
     const response = await data.json();
     console.log(response);
@@ -41,14 +41,20 @@ function Details() {
   }
 
   useEffect(() => {
-    getMangaDetails(url);
+    getMangaDetails(urlManga);
   }, []); //eslint-disable-line
 
   if (isLoading) {
-    return <div className="bg-white text-black dark:bg-gray-800 dark:text-white grid place-items-center w-screen h-screen"><div><div className="lds-ripple">
-                <div></div>
-                <div></div>
-              </div></div></div>
+    return (
+      <div className="bg-white text-black dark:bg-gray-800 dark:text-white grid place-items-center w-screen h-screen">
+        <div>
+          <div className="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -181,7 +187,7 @@ function Details() {
                         <button
                           className="flex
                           items-center
-                          justify-between"
+                          justify-between font-semibold"
                           onClick={() => {
                             setListChapter(listChapter.reverse());
                             setIsActive(!isActive);
@@ -195,7 +201,7 @@ function Details() {
                           )}
                         </button>
                       </p>
-                      <p>Lượt xem</p>
+                      <p className="font-semibold">Lượt xem</p>
                     </div>
                     <div className="flex items-center justify-between">
                       <p className="break-after-auto p-2">
@@ -205,7 +211,11 @@ function Details() {
                             key={chapter.chapterName}
                           >
                             <Link to={`/read/${chapter.chapterId}`}>
-                              {chapter.chapterName}
+                              {chapter.chapterName.length > 30
+                                ? `${chapter.chapterName
+                                    .slice()
+                                    .substring(0, 27)}...`
+                                : `${chapter.chapterName}`}
                             </Link>
                           </p>
                         ))}
@@ -221,6 +231,17 @@ function Details() {
                           </p>
                         ))}
                       </p>
+
+                      {/* <p className="text-gray-500 text-sm break-after-auto p-2">
+                        {listChapter.map((chapter) => (
+                          <p
+                            className="px-3 py-1 text-sm rounded-md"
+                            key={chapter.updatedAt}
+                          >
+                            {chapter.updateAt}
+                          </p>
+                        ))}
+                      </p> */}
                     </div>
                   </li>
                 </ul>

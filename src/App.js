@@ -10,7 +10,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
         <Route path="/details/:url" element={<Details />} />
-        <Route path="/read" element={<Read/>} />
+        <Route path="/read/:url" element={<Read/>} />
           <Route path="/login" element={<Login />} />
         </Routes>
     </Router>
