@@ -28,11 +28,12 @@ function Details() {
   const [listChapter, setListChapter] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  let urlManga = useParams();
+  let url = useParams();
   async function getMangaDetails() {
     const data = await fetch(
-      `https://manganami.herokuapp.com/details/${urlManga.url}`
+      `https://manganami.herokuapp.com/details/${url.mangaId}`
     );
+
     const response = await data.json();
     console.log(response);
     setMangaDetails(response);
@@ -40,9 +41,10 @@ function Details() {
     setLoading(false);
   }
 
+
   useEffect(() => {
-    getMangaDetails(urlManga);
-  }, []); //eslint-disable-line
+    getMangaDetails(url);
+  }, []);
 
   if (isLoading) {
     return (
@@ -209,8 +211,9 @@ function Details() {
                           <p
                             className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[103%]"
                             key={chapter.chapterName}
+
                           >
-                            <Link to={`/read/${chapter.chapterId}`}>
+                            <Link to={`/read/${chapter.chapterId}`} >
                               {chapter.chapterName.length > 30
                                 ? `${chapter.chapterName
                                     .slice()

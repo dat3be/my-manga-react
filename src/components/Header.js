@@ -1,7 +1,9 @@
 import React from "react";
-import { DarkThemeToggle } from "flowbite-react";
 import useDarkMode from "./useDarkMode";
+import { DarkThemeToggle } from "flowbite-react";
 import { IoHome } from "react-icons/io5";
+
+
 
 function Header() {
   const [isDarkMode, toggleDarkMode] = useDarkMode();

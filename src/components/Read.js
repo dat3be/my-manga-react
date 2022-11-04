@@ -1,29 +1,31 @@
 import React from "react";
 import Header from "./Header";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+
+export function handleReadManga(e) {
+  e.preventDefault();
+  console.log("Chapter clicked! and Read");
+}
 
 function Read() {
-  const [mangaDetails, setMangaDetails] = useState({});
-  const [isActive, setIsActive] = useState(false);
-  const [listChapter, setListChapter] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-
-  let urlChapter = useParams();
-  async function getMangaDetails() {
-    const data = await fetch(
-      `https://manganami.herokuapp.com/chapter/${urlChapter.url}`
+  async function getChapter() {
+    const response = await fetch(
+      `https://manganami.herokuapp.com/chapter/${url.chapterId}`
     );
-    const response = await data.json();
-    console.log(response);
-    console.log('Hello')
-    // setMangaDetails(response);
-    // setListChapter(response.chapters);
-    // setLoading(false);
+    const data = await response.json();
+    console.log(data);
+    console.log("Hello");
   }
 
+  const [chapterList, setChapterList] = useState([]);
+
+  let url = useParams();
+  let location = useLocation();
+
   useEffect(() => {
-    getMangaDetails(urlChapter);
+    getChapter(url);
+    console.log(location)
   }, []);
 
   return (
@@ -33,7 +35,9 @@ function Read() {
       </div>
       <div className="bg-primary-200 pb-10 order-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-40 rounded">
         <div className="min-h-screen mt-[-1px]">
-          <div className="flex flex-col lg:flex-row">Hello World</div>
+          <div className="flex flex-col lg:flex-row">
+            Hello
+          </div>
         </div>
       </div>
     </div>
