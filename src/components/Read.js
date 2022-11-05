@@ -10,47 +10,34 @@ export function handleReadManga(e) {
 }
 
 function Read() {
+  let url = useParams();
   const [chapter, setChapter] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  // const config = {
-  //   method: "get",
-  //   headers: {
-  //     "Content-Type": "text/plain;charset=UTF-8",
-  //   },
-  //   body: undefined,
-  //   referer: "https://www.nettruyenin.com/",
-  //   refererPolicy: "unsafe-url",
-  //   mode: "cors",
-  //   credentials: "same-origin",
-  //   cache: "default",
-  //   redirect: "follow",
-  //   integrity: "",
-  //   keepalive: false,
-  //   signal: undefined,
-  //   window: window
-  // };
-
   function getChapter() {
-    axios({
-      method: "get",
-      url: `https://manganami.herokuapp.com/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
-      headers: {
-        "Content-Type": "text/plain;charset=UTF-8",
-      },
-      body: undefined,
-      referer: "https://www.nettruyenin.com/",
-      refererPolicy: "unsafe-url",
-      mode: "cors",
-    })
-      .then((response) => {
-        setChapter(response.data);
-        setLoading(false);
-        console.log(response.data);
+    return new Promise(async (resolve, reject) => {
+      await axios({
+        method: "GET",
+        url: `https://manganami.herokuapp.com/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
+        responseEncoding: "binary",
+        responseType: "",
+        headers: {
+          Referer: "https://www.nettruyenin.com/", // tag header important to void reuest failure (403)
+          Connection: "keep-alive",
+          Accept: "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+          "Accept-Encoding": "gzip, deflate",
+        },
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          setChapter(response.data);
+          setLoading(false);
+          console.log(response.data);
+          resolve(true)
+        })
+        .catch((error) => {
+          reject(error);
+        })
+    })
   }
 
   // async function getChapter() {
@@ -65,11 +52,8 @@ function Read() {
   //   console.log("Hello");
   // }
 
-  let url = useParams();
-
   useEffect(() => {
     getChapter(url);
-
   }, []);
 
   if (isLoading) {
@@ -96,7 +80,7 @@ function Read() {
             {chapter.mangaName} {" --- "}
             {chapter.currentChapter.chapterName}
             {chapter.chapterImages.map((chapter) => (
-              <img src={chapter.imgUrl} alt="chapter-content" />
+              <img src={chapter.imgUrl} alt="chapter-content"/>
             ))}
           </div>
         </div>
