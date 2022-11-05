@@ -31,20 +31,39 @@ function Read() {
   //   window: window
   // };
 
-  async function getChapter() {
-    const response = await fetch(
-      `https://manganami.herokuapp.com/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
-      {
-        referer: "https://www.nettruyenin.com/",
-      }
-    );
-
-    const data = await response.json();
-    console.log(data);
-    setChapter(data);
-    setLoading(false);
-    console.log("Hello");
+  function getChapter() {
+    axios({
+      method: "get",
+      url: `https://manganami.herokuapp.com/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
+      headers: {
+        "Content-Type": "text/plain;charset=UTF-8",
+      },
+      body: undefined,
+      referer: "https://www.nettruyenin.com/",
+      refererPolicy: "unsafe-url",
+      mode: "cors",
+    })
+      .then((response) => {
+        setChapter(response.data);
+        setLoading(false);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
+  // async function getChapter() {
+  //   const response = await fetch(
+  //     `https://manganami.herokuapp.com/chapter/${url.mangaName}/${url.chapNo}/${url.number}`
+  //   );
+
+  //   const data = await response.json();
+  //   console.log(data);
+  //   setChapter(data);
+  //   setLoading(false);
+  //   console.log("Hello");
+  // }
 
   let url = useParams();
 
