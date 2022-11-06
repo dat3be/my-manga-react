@@ -71,13 +71,18 @@ function Read() {
       <div className="bg-primary-200 pb-10 order-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-40 rounded">
         <div className="min-h-screen mt-[-1px]">
           <ul className="bg-white text-black dark:bg-gray-800 dark:text-white grid place-items-center w-full h-full">
-              {chapter.mangaName} {" --- "}
-              {chapter.currentChapter.chapterName}
-              {chapter.chapterImages.map((chapter, index) => (
-                <li>
-                  <img src={chapter.imgUrl} alt={chapter.title} key={index} />
-                </li>
-              ))}
+            {chapter.mangaName} {" --- "}
+            {chapter.currentChapter.chapterName}
+            {chapter.chapterImages.map((chapter, index) => (
+              <li>
+                <img
+                  className="object-cover h-[12rem] transition-all duration-500 w-full !h-full"
+                  src={chapter.imgUrl}
+                  alt={chapter.title}
+                  key={index}
+                />
+              </li>
+            ))}
           </ul>
         </div>
       </div>
