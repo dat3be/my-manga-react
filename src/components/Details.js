@@ -211,10 +211,10 @@ function Details() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="break-after-auto p-2">
-                        {listChapter.map((chapter) => (
+                        {listChapter.map((chapter, index) => (
                           <div
                             className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[103%]"
-                            key={chapter.chapterName}
+                            key={index}
                           >
                             <Link to={`/read/${chapter.chapterId}`}>
                               {chapter.chapterName.length > 30
@@ -228,10 +228,10 @@ function Details() {
                       </div>
 
                       <div className="text-gray-500 text-sm break-after-auto p-2">
-                        {listChapter.map((chapter) => (
+                        {listChapter.map((chapter, index) => (
                           <div
                             className="px-3 py-1 text-sm rounded-md"
-                            key={chapter.viewCount}
+                            key={index}
                           >
                             {chapter.viewCount}
                           </div>
