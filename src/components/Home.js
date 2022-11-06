@@ -9,7 +9,7 @@ function Home() {
 
   async function useLoadMore(page) {
     const response = await fetch(
-      `https://manganami.herokuapp.com/list?page=${page}`
+      `https://nettruyen-api-production.up.railway.app/list?page=${page}`
     );
     const data = await response.json();
     let newData = [...topManga, ...data.data];
