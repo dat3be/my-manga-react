@@ -41,7 +41,6 @@ function Details() {
     setLoading(false);
   }
 
-
   useEffect(() => {
     getMangaDetails(url);
   }, []);
@@ -141,21 +140,32 @@ function Details() {
                     </li>
                   </ul>
                   <div className="flex mt-4 gap-4 flex-wrap my-3 text-white">
-                    <button className="bg-green-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
-                      <IoFlashOutline
-                        size="20"
-                        className="float-left align-baseline"
-                      />
-                      Chap mới
-                    </button>
+                    <Link to={`/read/${listChapter[0].chapterId}`}>
+                      <button className="bg-green-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
+                        <IoFlashOutline
+                          size="20"
+                          className="float-left align-baseline"
+                        />
+                        Chap mới
+                      </button>
+                    </Link>
 
-                    <button className="px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  dark:bg-white bg-gray-dark dark:text-black text-white">
-                      <IoBookOutline
-                        size="20"
-                        className="float-left align-baseline"
-                      />
-                      Đọc từ đầu
-                    </button>
+                    <Link to={`/read/${listChapter[listChapter.length-1].chapterId}`}>
+                      <button
+                        className="px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  dark:bg-white bg-gray-dark dark:text-black text-white"
+                        onClick={() =>
+                          listChapter.map((chapter) =>
+                            console.log(chapter.chapterName)
+                          )
+                        }
+                      >
+                        <IoBookOutline
+                          size="20"
+                          className="float-left align-baseline"
+                        />
+                        Đọc từ đầu
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -211,9 +221,8 @@ function Details() {
                           <p
                             className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[103%]"
                             key={chapter.chapterName}
-
                           >
-                            <Link to={`/read/${chapter.chapterId}`} >
+                            <Link to={`/read/${chapter.chapterId}`}>
                               {chapter.chapterName.length > 30
                                 ? `${chapter.chapterName
                                     .slice()
