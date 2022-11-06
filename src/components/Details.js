@@ -152,13 +152,7 @@ function Details() {
 
                     <Link to={`/read/${listChapter[listChapter.length-1].chapterId}`}>
                       <button
-                        className="px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  dark:bg-white bg-gray-dark dark:text-black text-white"
-                        onClick={() =>
-                          listChapter.map((chapter) =>
-                            console.log(chapter.chapterName)
-                          )
-                        }
-                      >
+                        className="px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  dark:bg-white bg-gray-dark dark:text-black text-white">
                         <IoBookOutline
                           size="20"
                           className="float-left align-baseline"
@@ -177,9 +171,9 @@ function Details() {
                     &nbsp;Tóm tắt
                   </h1>
                 </div>
-                <p className="mt-4 justify-between">
+                <div className="mt-4 justify-between">
                   {mangaDetails.description}
-                </p>
+                </div>
               </div>
 
               <div className="mt-4">
@@ -195,7 +189,7 @@ function Details() {
                 <ul className="w-full h-[350px] overflow-y-scroll">
                   <li>
                     <div className="flex items-center justify-between mt-4 p-2">
-                      <p>
+
                         <button
                           className="flex
                           items-center
@@ -212,13 +206,13 @@ function Details() {
                             <IoArrowUp size="20" />
                           )}
                         </button>
-                      </p>
-                      <p className="font-semibold">Lượt xem</p>
+
+                      <div className="font-semibold">Lượt xem</div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <p className="break-after-auto p-2">
+                      <div className="break-after-auto p-2">
                         {listChapter.map((chapter) => (
-                          <p
+                          <div
                             className="px-3 py-1 text-sm rounded-md transition-all hover:scale-[103%]"
                             key={chapter.chapterName}
                           >
@@ -229,31 +223,31 @@ function Details() {
                                     .substring(0, 27)}...`
                                 : `${chapter.chapterName}`}
                             </Link>
-                          </p>
+                          </div>
                         ))}
-                      </p>
+                      </div>
 
-                      <p className="text-gray-500 text-sm break-after-auto p-2">
+                      <div className="text-gray-500 text-sm break-after-auto p-2">
                         {listChapter.map((chapter) => (
-                          <p
+                          <div
                             className="px-3 py-1 text-sm rounded-md"
                             key={chapter.viewCount}
                           >
                             {chapter.viewCount}
-                          </p>
+                          </div>
                         ))}
-                      </p>
+                      </div>
 
-                      {/* <p className="text-gray-500 text-sm break-after-auto p-2">
+                      {/* <div className="text-gray-500 text-sm break-after-auto p-2 hidden:sm">
                         {listChapter.map((chapter) => (
-                          <p
+                          <div
                             className="px-3 py-1 text-sm rounded-md"
                             key={chapter.updatedAt}
                           >
                             {chapter.updateAt}
-                          </p>
+                          </div>
                         ))}
-                      </p> */}
+                      </div> */}
                     </div>
                   </li>
                 </ul>
