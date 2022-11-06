@@ -17,26 +17,20 @@ function Read() {
   function getChapter() {
     return new Promise(async (resolve, reject) => {
       await axios({
+        authority: "https://manganami.herokuapp.com",
         method: "GET",
+        scheme: "https",
         url: `https://manganami.herokuapp.com/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
-        responseEncoding: "binary",
-        responseType: "",
-        headers: {
-          Referer: "https://www.nettruyenin.com/", // tag header important to void reuest failure (403)
-          Connection: "keep-alive",
-          Accept: "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-          "Accept-Encoding": "gzip, deflate",
-        },
       })
         .then((response) => {
           setChapter(response.data);
           setLoading(false);
           console.log(response.data);
-          resolve(true)
+          resolve(true);
         })
         .catch((error) => {
           reject(error);
-        })
+        });
     })
   }
 
