@@ -17,6 +17,8 @@ import {
   IoLogoReddit,
 } from "react-icons/io5";
 
+import * as config from "../config/config";
+
 export function handleReadManga(e) {
   e.preventDefault();
   console.log("Manga clicked! and Read");
@@ -30,9 +32,7 @@ function Details() {
 
   let url = useParams();
   async function getMangaDetails() {
-    const data = await fetch(
-      `https://nettruyen-api.up.railway.app/details/${url.mangaId}`
-    );
+    const data = await fetch(`${config.API_URL}/details/${url.mangaId}`);
 
     const response = await data.json();
     console.log(response);

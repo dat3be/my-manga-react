@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Header from "./Header";
 import MainContent from "./MainContent";
+import * as config from "../config/config";
 
 function Home() {
   const [topManga, setTopManga] = useState([]);
@@ -9,7 +10,7 @@ function Home() {
 
   async function useLoadMore(page) {
     const response = await fetch(
-      `https://nettruyen-api.up.railway.app/list?page=${page}`
+      `${config.API_URL}/list?page=${page}`
     );
     const data = await response.json();
     let newData = [...topManga, ...data.data];

@@ -1,8 +1,9 @@
 import React from "react";
 import Header from "./Header";
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+import * as config from "../config/config";
 
 export function handleReadManga(e) {
   e.preventDefault();
@@ -17,10 +18,10 @@ function Read() {
   function getChapter() {
     return new Promise(async (resolve, reject) => {
       await axios({
-        authority: "https://nettruyen-api.up.railway.app",
+        authority: config.API_URL,
         method: "GET",
         scheme: "https",
-        url: `https://nettruyen-api.up.railway.app/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
+        url: `${config.API_URL}/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
       })
         .then((response) => {
           setChapter(response.data);
