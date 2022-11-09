@@ -17,10 +17,10 @@ function Read() {
   function getChapter() {
     return new Promise(async (resolve, reject) => {
       await axios({
-        authority: "https://nettruyen-api-production.up.railway.app",
+        authority: "https://nettruyen-api.up.railway.app",
         method: "GET",
         scheme: "https",
-        url: `https://nettruyen-api-production.up.railway.app/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
+        url: `https://nettruyen-api.up.railway.app/chapter/${url.mangaName}/${url.chapNo}/${url.number}`,
       })
         .then((response) => {
           setChapter(response.data);

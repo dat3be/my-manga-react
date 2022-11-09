@@ -31,7 +31,7 @@ function Details() {
   let url = useParams();
   async function getMangaDetails() {
     const data = await fetch(
-      `https://nettruyen-api-production.up.railway.app/details/${url.mangaId}`
+      `https://nettruyen-api.up.railway.app/details/${url.mangaId}`
     );
 
     const response = await data.json();
