@@ -19,10 +19,6 @@ export function prevChapter() {
   console.log("Previous Chapter");
 }
 
-export function openModal() {
-  <Modal />;
-}
-
 function Read() {
   let url = useParams();
   const [chapter, setChapter] = useState([]);
