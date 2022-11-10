@@ -68,10 +68,8 @@ function Details() {
           <div className="flex flex-col lg:flex-row">
             <div className="pt-4 flex-1 text-text-color">
               <div className="mb-5 text-center">
-                <h1 className="font-bold text-xl text-text-color">
-                  {mangaDetails.mangaName}
-                </h1>
-                <p className="font-semibold text-gray-500">
+                <h1 className="font-bold text-xl">{mangaDetails.mangaName}</h1>
+                <p className="text-gray-500">
                   Đã cập nhật lúc {mangaDetails.updatedAt}
                 </p>
               </div>
@@ -108,7 +106,7 @@ function Details() {
                         <IoLink size="25" />
                       </button>
                     </div>
-                    <button className="bg-blue-500 px-3 py-1 text-sm text-text-color rounded-md font-semibold transition-all hover:scale-[110%]">
+                    <button className="dark:bg-blue-500 bg-blue-400 px-3 py-1 text-sm text-text-color rounded-md font-semibold transition-all hover:scale-[110%]">
                       Theo dõi
                     </button>
                   </div>
@@ -130,7 +128,7 @@ function Details() {
                       <div className="flex gap-3 flex-wrap">
                         {mangaDetails.categories.map((category) => (
                           <p
-                            className="bg-blue-500 px-3 py-1 text-sm rounded-md font-semibold transition-all hover:scale-[110%]"
+                            className="dark:bg-blue-500 bg-blue-400 px-3 py-1 text-sm rounded-md font-semibold transition-all hover:scale-[110%]"
                             key={category.categoryName}
                           >
                             <button>{category.categoryName}</button>
@@ -150,9 +148,12 @@ function Details() {
                       </button>
                     </Link>
 
-                    <Link to={`/read/${listChapter[listChapter.length-1].chapterId}`}>
-                      <button
-                        className="px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  dark:bg-white bg-gray-dark dark:text-black text-white">
+                    <Link
+                      to={`/read/${
+                        listChapter[listChapter.length - 1].chapterId
+                      }`}
+                    >
+                      <button className="px-3 py-1 text-sm text-text-color rounded-md font-semibold pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]  dark:bg-white bg-gray-dark dark:text-black text-white">
                         <IoBookOutline
                           size="20"
                           className="float-left align-baseline"
@@ -189,23 +190,22 @@ function Details() {
                 <ul className="w-full h-[350px] overflow-y-scroll">
                   <li>
                     <div className="flex items-center justify-between mt-4 p-2">
-
-                        <button
-                          className="flex
+                      <button
+                        className="flex
                           items-center
                           justify-between font-semibold"
-                          onClick={() => {
-                            setListChapter(listChapter.reverse());
-                            setIsActive(!isActive);
-                          }}
-                        >
-                          Sắp xếp chương{" "}
-                          {isActive ? (
-                            <IoArrowDown size="20" />
-                          ) : (
-                            <IoArrowUp size="20" />
-                          )}
-                        </button>
+                        onClick={() => {
+                          setListChapter(listChapter.reverse());
+                          setIsActive(!isActive);
+                        }}
+                      >
+                        Sắp xếp chương{" "}
+                        {isActive ? (
+                          <IoArrowDown size="20" />
+                        ) : (
+                          <IoArrowUp size="20" />
+                        )}
+                      </button>
 
                       <div className="font-semibold">Lượt xem</div>
                     </div>
